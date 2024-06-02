@@ -34,7 +34,7 @@ False
 <Route pattern='/person/12'>
 ```
 
-** define a url filter**
+**define a url filter**
 
 ``` python
 from routex import url_param_filter
