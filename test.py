@@ -18,8 +18,23 @@ class TestRoute(unittest.TestCase):
             r = Route("", lambda: "world")
 
     def test_route_match(self):
-        r = Route("/", lambda: "hello")
+        def func():
+            return "just a func"
+
+        r = Route("/", func)
         self.assertFalse(r.match(""))
+        self.assertTrue("/")
+
+        r = Route("hello", func)
+        self.assertFalse(r.match("/"))
+        self.assertFalse(r.match("/hello"))
+        self.assertFalse(r.match("hello/"))
+
+        r = Route("/<name:str>/<age:int>", func)
+        self.assertTrue(r.match("/kobe/24"))
+        self.assertFalse(r.match("/kobe/Laker"))
+        self.assertFalse(r.match(""))
+        self.assertFalse(r.match("/kobe"))
 
 
 if __name__ == "__main__":
