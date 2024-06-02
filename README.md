@@ -33,3 +33,19 @@ False
 >>> rt.match("/person/12")
 <Route pattern='/person/12'>
 ```
+
+** define a url filter**
+
+``` python
+from routex import url_param_filter
+
+@url_param_filter("good")
+def good_filter(s: str):
+	return s == "good"
+
+# your route can define like this
+
+r = Route("/<how:good>", lambda:22)
+r.match("/bad") #False
+r.match("/good") #True
+```
