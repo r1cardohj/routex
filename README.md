@@ -1,8 +1,8 @@
 # routex
 
-Write a web framework step-01 for myself: routex.
-
 routex is a simple routing module which have a clear api.
+
+**Write a web framework for myself step-01 : routex.**
 
 **1.route obj**
 
